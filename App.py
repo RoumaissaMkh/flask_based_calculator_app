@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-app = Flask(name)
+app = Flask(__name__)
 
 @app.route('/add/<int:numberA>/<int:numberB>', methods=['GET'])
 def add(numberA, numberB):
@@ -29,6 +29,6 @@ def mod(numberA, numberB):
     result = numberA % numberB
     return jsonify(status=200, result=result)
 
-if name == 'main':
+if __name__ == '__main__':
     app.run(debug=True)
 
