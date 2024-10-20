@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import os
 app = Flask(__name__)
 
 @app.route('/add/<int:numberA>/<int:numberB>', methods=['GET'])
@@ -29,6 +30,9 @@ def mod(numberA, numberB):
     result = numberA % numberB
     return jsonify(status=200, result=result)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
 
